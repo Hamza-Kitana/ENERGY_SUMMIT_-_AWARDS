@@ -262,17 +262,17 @@ const CompanyLogoCard = ({ company, index, isVisible }: { company: Company; inde
               {/* Logo container */}
               <div className={cn(
                 "relative z-10 flex items-center justify-center w-full h-full",
-                company.name === "Ministry of Energy & Infrastructure UAE" ? "p-2" : "p-4"
+                company.name === "Ministry of Energy & Infrastructure UAE" ? "p-1 sm:p-2" : "p-2 sm:p-3 md:p-4"
               )}>
                 <img
                   src={company.logo}
                   alt={company.name}
                   className={cn(
                     "object-contain transition-all duration-500",
-                    company.name === "Ministry of Energy & Infrastructure UAE" 
-                      ? "w-full h-full" 
+                    company.name === "Ministry of Energy & Infrastructure UAE"
+                      ? "w-full h-full"
                       : "w-full h-full",
-                    isVisible 
+                    isVisible
                       ? company.name === "Ministry of Energy & Infrastructure UAE"
                         ? "opacity-100 scale-110"
                         : "opacity-100 scale-100"
