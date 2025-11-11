@@ -23,7 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Large video files
+# Video files (temporarily ignored)
 public/foo.mp4
 public/sk.mp4
-*.mp4
