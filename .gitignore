@@ -22,7 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Video files (temporarily ignored)
-public/foo.mp4
-public/sk.mp4
