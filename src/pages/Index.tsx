@@ -208,7 +208,7 @@ const ExpectedParticipationCard = ({ icon, value, suffix, label, description, co
   return (
     <div 
       className={cn(
-        "group rounded-3xl border-2 bg-white backdrop-blur p-10 text-center shadow-2xl hover:scale-110 transition-all duration-300",
+        "group rounded-2xl md:rounded-3xl border-2 bg-white backdrop-blur p-6 sm:p-8 md:p-10 text-center shadow-xl hover:shadow-2xl md:hover:scale-105 transition-all duration-300",
         colors.border,
         colors.shadow
       )}
@@ -219,12 +219,12 @@ const ExpectedParticipationCard = ({ icon, value, suffix, label, description, co
         transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
       }}
     >
-      <div className="text-6xl mb-4">{icon}</div>
-      <div className={cn("text-6xl font-black mb-4 group-hover:scale-110 transition-transform", colors.text)}>
+      <div className="text-4xl sm:text-5xl md:text-6xl mb-3 md:mb-4">{icon}</div>
+      <div className={cn("text-4xl sm:text-5xl md:text-6xl font-black mb-3 md:mb-4 group-hover:scale-110 transition-transform", colors.text)}>
         {counter?.count || `0${suffix}`}
       </div>
-      <div className="text-lg font-bold text-foreground mb-3">{label}</div>
-      <p className="text-base text-muted-foreground">{description}</p>
+      <div className="text-base sm:text-lg font-bold text-foreground mb-2 md:mb-3">{label}</div>
+      <p className="text-sm sm:text-base text-muted-foreground">{description}</p>
     </div>
   );
 };
@@ -247,18 +247,18 @@ const CompanyLogoCard = ({ company, index, isVisible }: { company: Company; inde
       <HoverCard>
         <HoverCardTrigger asChild>
           <DialogTrigger asChild>
-            <div 
-              className={cn(
-                "group relative bg-white rounded-full aspect-square p-9 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-primary/20 hover:border-primary/40 cursor-pointer hover:scale-110 flex flex-col items-center justify-center overflow-hidden",
-                isVisible 
-                  ? "opacity-100 scale-100 translate-y-0 rotate-0" 
-                  : "opacity-0 scale-50 translate-y-20 rotate-12"
-              )}
-              style={{ 
-                transitionDelay: `${cardDelay}ms`,
-                transition: 'opacity 1s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)'
-              }}
-            >
+                   <div
+                     className={cn(
+                       "group relative bg-white rounded-full aspect-square p-6 sm:p-8 md:p-9 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-primary/20 hover:border-primary/40 cursor-pointer hover:scale-105 md:hover:scale-110 flex flex-col items-center justify-center overflow-hidden",
+                       isVisible
+                         ? "opacity-100 scale-100 translate-y-0 rotate-0"
+                         : "opacity-0 scale-50 translate-y-20 rotate-12"
+                     )}
+                     style={{
+                       transitionDelay: `${cardDelay}ms`,
+                       transition: 'opacity 1s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                     }}
+                   >
               {/* Logo container */}
               <div className={cn(
                 "relative z-10 flex items-center justify-center w-full h-full",
@@ -1468,91 +1468,91 @@ const Index = () => {
             </div>
 
             <div className="flex flex-wrap justify-center items-center gap-6 mb-12">
-              <div className="group relative bg-white/90 backdrop-blur-sm p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-64 rotate-2 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 rotate-2 hover:rotate-0">
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Lightbulb className="h-8 w-8 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Renewable Energy Equipment Manufacturers</h4>
+                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Renewable Energy Equipment Manufacturers</h4>
                     <p className="text-xs text-muted-foreground">(Solar, Wind, Hydrogen)</p>
                   </div>
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-64 -rotate-1 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 -rotate-1 hover:rotate-0">
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Network className="h-8 w-8 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Smart Grid & Energy Storage Companies</h4>
+                    <h4 className="font-semibold text-foreground text-sm sm:text-base">Smart Grid & Energy Storage Companies</h4>
                   </div>
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-64 rotate-1 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 rotate-1 hover:rotate-0">
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Globe className="h-8 w-8 text-secondary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Carbon Capture & Hydrogen Technology Providers</h4>
+                    <h4 className="font-semibold text-foreground text-sm sm:text-base">Carbon Capture & Hydrogen Technology Providers</h4>
                   </div>
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-64 -rotate-2 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 -rotate-2 hover:rotate-0">
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Target className="h-8 w-8 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Smart Metering and IoT Solution Developers</h4>
+                    <h4 className="font-semibold text-foreground text-sm sm:text-base">Smart Metering and IoT Solution Developers</h4>
                   </div>
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-64 rotate-3 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 rotate-3 hover:rotate-0">
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Zap className="h-8 w-8 text-secondary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Clean Mobility & EV Infrastructure Firms</h4>
+                    <h4 className="font-semibold text-foreground text-sm sm:text-base">Clean Mobility & EV Infrastructure Firms</h4>
                   </div>
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-64 -rotate-1 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 -rotate-1 hover:rotate-0">
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <TrendingUp className="h-8 w-8 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Digital Energy and AI-driven Analytics Companies</h4>
+                    <h4 className="font-semibold text-foreground text-sm sm:text-base">Digital Energy and AI-driven Analytics Companies</h4>
                   </div>
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-64 rotate-2 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 rotate-2 hover:rotate-0">
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Building2 className="h-8 w-8 text-secondary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Engineering, Procurement & Construction (EPC) Firms</h4>
+                    <h4 className="font-semibold text-foreground text-sm sm:text-base">Engineering, Procurement & Construction (EPC) Firms</h4>
                   </div>
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-64 -rotate-2 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 -rotate-2 hover:rotate-0">
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Star className="h-8 w-8 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Financial & Legal Advisory Firms</h4>
+                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Financial & Legal Advisory Firms</h4>
                     <p className="text-xs text-muted-foreground">specialized in energy projects</p>
                   </div>
                 </div>
