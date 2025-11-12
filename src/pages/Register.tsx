@@ -39,8 +39,9 @@ const Register = () => {
     <div className="min-h-screen flex flex-col">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
+      <div className="flex-1">
+        {/* Hero Section */}
+        <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
         <FloatingElements />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -55,13 +56,19 @@ const Register = () => {
       </section>
 
       {/* Registration Form */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative overflow-hidden">
+        {/* Background with gradient and pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             {/* Registration Form */}
-            <Card className="max-w-3xl mx-auto">
-              <CardHeader>
-                <CardTitle className="text-2xl">Registration Details</CardTitle>
+            <Card className="max-w-3xl mx-auto border-2 border-white/10 bg-white/95 backdrop-blur-sm">
+              <CardHeader className="bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20">
+                <CardTitle className="text-2xl text-slate-900">Registration Details</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -164,6 +171,7 @@ const Register = () => {
           </div>
         </div>
       </section>
+      </div>
 
       <Footer />
     </div>

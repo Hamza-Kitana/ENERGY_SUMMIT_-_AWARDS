@@ -93,8 +93,9 @@ const Happenings = () => {
     <div className="min-h-screen flex flex-col">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
+      <div className="flex-1">
+        {/* Hero Section */}
+        <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
         <FloatingElements />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -152,24 +153,30 @@ const Happenings = () => {
       </section>
 
       {/* Day 1 Schedule */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 via-white to-secondary/5">
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative overflow-hidden">
+        {/* Background with gradient and pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">DAY 1 – STRATEGY, POLICY & FUTURE ENERGY LANDSCAPE</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white drop-shadow-lg">DAY 1 – STRATEGY, POLICY & FUTURE ENERGY LANDSCAPE</h2>
             </div>
             <div className="space-y-4">
               {day1Events.map((event, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2">
-                  <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10">
+                <Card key={index} className="overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1 border-2 border-white/10 bg-white/95 backdrop-blur-sm">
+                  <CardHeader className="bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20">
                     <div className="flex items-start justify-between flex-wrap gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <Clock className="h-5 w-5 text-primary" />
-                          <span className="font-bold text-primary">{event.time}</span>
+                          <Clock className="h-5 w-5 text-blue-600" />
+                          <span className="font-bold text-blue-600">{event.time}</span>
                         </div>
-                        <CardTitle className="text-xl mb-2">{event.title}</CardTitle>
-                        <p className="text-muted-foreground">
+                        <CardTitle className="text-xl mb-2 text-slate-900">{event.title}</CardTitle>
+                        <p className="text-slate-700">
                           {event.description}
                         </p>
                       </div>
@@ -212,6 +219,7 @@ const Happenings = () => {
           </div>
         </div>
       </section>
+      </div>
 
       <Footer />
     </div>

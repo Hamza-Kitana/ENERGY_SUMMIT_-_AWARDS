@@ -384,14 +384,14 @@ const Index = () => {
     { icon: Globe, value: 25, suffix: "+", label: "Participating Countries" },
   ];
   const heroLogos = [
-    "https://www.moei.gov.ae/images/9a328d73/full/jpg.aspx",
-    "https://logo.clearbit.com/adnoc.ae",
-    "https://logo.clearbit.com/dewa.gov.ae",
-    "https://logo.clearbit.com/masdar.ae",
-    "https://logo.clearbit.com/ewec.ae",
-    "https://logo.clearbit.com/taqa.com",
-    "https://logo.clearbit.com/siemens-energy.com",
-    "https://logo.clearbit.com/acwapower.com",
+    "/Ministry of Energy & Infrastructure UAE.png",
+    "/ADNOC.png",
+    "/DEWA.png",
+    "/Masdar.png",
+    "/EWEC.png",
+    "/Abu Dhabi National Energy Company.png",
+    "/Siemens Energy.png",
+    "/ACWA Power.png",
   ];
   
   const statsSectionRef = useScrollAnimation(0.2);
@@ -433,7 +433,7 @@ const Index = () => {
   const companies: Company[] = [
     {
       name: "Ministry of Energy & Infrastructure UAE",
-      logo: "https://www.moei.gov.ae/images/9a328d73/full/jpg.aspx",
+      logo: "/Ministry of Energy & Infrastructure UAE.png",
       description: "Leading the UAE's energy transition and infrastructure development",
       category: "Government Authority",
       website: "https://www.moenergy.gov.ae",
@@ -446,7 +446,7 @@ const Index = () => {
     },
     {
       name: "ADNOC",
-      logo: "https://logo.clearbit.com/adnoc.ae",
+      logo: "/ADNOC.png",
       description: "Abu Dhabi National Oil Company - Leading energy transition",
       category: "Oil & Gas",
       website: "https://www.adnoc.ae",
@@ -459,7 +459,7 @@ const Index = () => {
     },
     {
       name: "DEWA",
-      logo: "https://logo.clearbit.com/dewa.gov.ae",
+      logo: "/DEWA.png",
       description: "Dubai Electricity and Water Authority",
       category: "Utilities",
       website: "https://www.dewa.gov.ae",
@@ -472,7 +472,7 @@ const Index = () => {
     },
     {
       name: "Masdar",
-      logo: "https://logo.clearbit.com/masdar.ae",
+      logo: "/Masdar.png",
       description: "Abu Dhabi Future Energy Company",
       category: "Renewable Energy",
       website: "https://www.masdar.ae",
@@ -485,7 +485,7 @@ const Index = () => {
     },
     {
       name: "EWEC",
-      logo: "https://logo.clearbit.com/ewec.ae",
+      logo: "/EWEC.png",
       description: "Emirates Water and Electricity Company",
       category: "Utilities",
       website: "https://www.ewec.ae",
@@ -498,7 +498,7 @@ const Index = () => {
     },
     {
       name: "TAQA",
-      logo: "https://logo.clearbit.com/taqa.com",
+      logo: "/Abu Dhabi National Energy Company.png",
       description: "Abu Dhabi National Energy Company",
       category: "Energy",
       website: "https://www.taqa.com",
@@ -511,7 +511,7 @@ const Index = () => {
     },
     {
       name: "Siemens Energy",
-      logo: "https://logo.clearbit.com/siemens-energy.com",
+      logo: "/Siemens Energy.png",
       description: "Global energy technology company",
       category: "Technology",
       website: "https://www.siemens-energy.com",
@@ -524,7 +524,7 @@ const Index = () => {
     },
     {
       name: "ACWA Power",
-      logo: "https://logo.clearbit.com/acwapower.com",
+      logo: "/ACWA Power.png",
       description: "Leading developer, investor and operator of power generation and desalinated water plants",
       category: "Renewable Energy",
       website: "https://www.acwapower.com",
@@ -537,7 +537,7 @@ const Index = () => {
     },
     {
       name: "First Abu Dhabi Bank",
-      logo: "https://logo.clearbit.com/bankfab.com",
+      logo: "/First Abu Dhabi Bank.png",
       description: "UAE's largest bank and financial services provider",
       category: "Financial Services",
       website: "https://www.bankfab.com",
@@ -550,7 +550,7 @@ const Index = () => {
     },
     {
       name: "Emirates NBD",
-      logo: "https://logo.clearbit.com/emiratesnbd.com",
+      logo: "/Emirates NBD.png",
       description: "Leading banking group in the region",
       category: "Financial Services",
       website: "https://www.emiratesnbd.com",
@@ -563,7 +563,7 @@ const Index = () => {
     },
     {
       name: "Abu Dhabi Investment Authority",
-      logo: "https://logo.clearbit.com/adia.ae",
+      logo: "/Abu Dhabi Investment Authority.png",
       description: "Sovereign wealth fund of Abu Dhabi",
       category: "Investment",
       website: "https://www.adia.ae",
@@ -576,7 +576,7 @@ const Index = () => {
     },
     {
       name: "Khalifa University",
-      logo: "https://logo.clearbit.com/ku.ac.ae",
+      logo: "/Khalifa University.png",
       description: "Leading research university in Abu Dhabi",
       category: "Academic & Research",
       website: "https://www.ku.ac.ae",
@@ -975,7 +975,7 @@ const Index = () => {
           <div className="max-w-5xl mx-auto text-center">
             <div className="mb-8">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
-                <span className="bg-gradient-to-r from-[#e0f2fe] via-[#fce7f3] to-[#fef9c3] bg-[length:300%_100%] bg-clip-text text-transparent animate-gradient-slow animate-text-glow-strong animate-hue-slow">
+                <span className="bg-gradient-to-r from-[#06b6d4] via-[#10b981] to-[#f59e0b] bg-[length:300%_100%] bg-clip-text text-transparent animate-gradient-slow animate-text-glow-strong animate-hue-slow">
                   ENERGY SUMMIT & AWARDS 2026
                 </span>
               </h1>
@@ -1572,34 +1572,30 @@ const Index = () => {
             <div className="relative overflow-x-hidden">
               <div className="inline-flex items-center gap-8 animate-scroll whitespace-nowrap">
                 {[
-                  { src: "https://logo.clearbit.com/adnoc.ae", alt: "ADNOC", name: "ADNOC" },
-                  { src: "https://logo.clearbit.com/masdar.ae", alt: "Masdar", name: "Masdar" },
-                  { src: "https://logo.clearbit.com/taqa.com", alt: "TAQA", name: "TAQA" },
-                  { src: "https://logo.clearbit.com/siemens-energy.com", alt: "Siemens Energy", name: "Siemens Energy" },
-                  { src: "https://logo.clearbit.com/se.com", alt: "Schneider Electric", name: "Schneider Electric" },
-                  { src: "https://logo.clearbit.com/abb.com", alt: "ABB", name: "ABB" },
-                  { src: "https://logo.clearbit.com/totalenergies.com", alt: "TotalEnergies", name: "TotalEnergies" },
-                  { src: "https://logo.clearbit.com/acwapower.com", alt: "ACWA Power", name: "ACWA Power" },
-                  { src: "https://logo.clearbit.com/wartsila.com", alt: "Wärtsilä", name: "Wärtsilä" },
-                  { src: "https://logo.clearbit.com/engie.com", alt: "ENGIE", name: "ENGIE" },
-                  { src: "https://logo.clearbit.com/hsbc.com", alt: "HSBC", name: "HSBC" },
-                  { src: "https://logo.clearbit.com/sc.com", alt: "Standard Chartered", name: "Standard Chartered" },
-                  { src: "https://logo.clearbit.com/emiratesnbd.com", alt: "Emirates NBD", name: "Emirates NBD" },
-                  { src: "https://logo.clearbit.com/pwc.com", alt: "PwC Middle East", name: "PwC Middle East" },
-                  { src: "https://logo.clearbit.com/adnoc.ae", alt: "ADNOC", name: "ADNOC" },
-                  { src: "https://logo.clearbit.com/masdar.ae", alt: "Masdar", name: "Masdar" },
-                  { src: "https://logo.clearbit.com/taqa.com", alt: "TAQA", name: "TAQA" },
-                  { src: "https://logo.clearbit.com/siemens-energy.com", alt: "Siemens Energy", name: "Siemens Energy" },
-                  { src: "https://logo.clearbit.com/se.com", alt: "Schneider Electric", name: "Schneider Electric" },
-                  { src: "https://logo.clearbit.com/abb.com", alt: "ABB", name: "ABB" },
-                  { src: "https://logo.clearbit.com/totalenergies.com", alt: "TotalEnergies", name: "TotalEnergies" },
-                  { src: "https://logo.clearbit.com/acwapower.com", alt: "ACWA Power", name: "ACWA Power" },
-                  { src: "https://logo.clearbit.com/wartsila.com", alt: "Wärtsilä", name: "Wärtsilä" },
-                  { src: "https://logo.clearbit.com/engie.com", alt: "ENGIE", name: "ENGIE" },
-                  { src: "https://logo.clearbit.com/hsbc.com", alt: "HSBC", name: "HSBC" },
-                  { src: "https://logo.clearbit.com/sc.com", alt: "Standard Chartered", name: "Standard Chartered" },
-                  { src: "https://logo.clearbit.com/emiratesnbd.com", alt: "Emirates NBD", name: "Emirates NBD" },
-                  { src: "https://logo.clearbit.com/pwc.com", alt: "PwC Middle East", name: "PwC Middle East" }
+                  { src: "/ADNOC.png", alt: "ADNOC", name: "ADNOC" },
+                  { src: "/Masdar.png", alt: "Masdar", name: "Masdar" },
+                  { src: "/Abu Dhabi National Energy Company.png", alt: "TAQA", name: "TAQA" },
+                  { src: "/Siemens Energy.png", alt: "Siemens Energy", name: "Siemens Energy" },
+                  { src: "/ACWA Power.png", alt: "ACWA Power", name: "ACWA Power" },
+                  { src: "/Emirates NBD.png", alt: "Emirates NBD", name: "Emirates NBD" },
+                  { src: "/First Abu Dhabi Bank.png", alt: "First Abu Dhabi Bank", name: "First Abu Dhabi Bank" },
+                  { src: "/Abu Dhabi Investment Authority.png", alt: "Abu Dhabi Investment Authority", name: "Abu Dhabi Investment Authority" },
+                  { src: "/DEWA.png", alt: "DEWA", name: "DEWA" },
+                  { src: "/EWEC.png", alt: "EWEC", name: "EWEC" },
+                  { src: "/Khalifa University.png", alt: "Khalifa University", name: "Khalifa University" },
+                  { src: "/Ministry of Energy & Infrastructure UAE.png", alt: "Ministry of Energy & Infrastructure UAE", name: "Ministry of Energy & Infrastructure UAE" },
+                  { src: "/ADNOC.png", alt: "ADNOC", name: "ADNOC" },
+                  { src: "/Masdar.png", alt: "Masdar", name: "Masdar" },
+                  { src: "/Abu Dhabi National Energy Company.png", alt: "TAQA", name: "TAQA" },
+                  { src: "/Siemens Energy.png", alt: "Siemens Energy", name: "Siemens Energy" },
+                  { src: "/ACWA Power.png", alt: "ACWA Power", name: "ACWA Power" },
+                  { src: "/Emirates NBD.png", alt: "Emirates NBD", name: "Emirates NBD" },
+                  { src: "/First Abu Dhabi Bank.png", alt: "First Abu Dhabi Bank", name: "First Abu Dhabi Bank" },
+                  { src: "/Abu Dhabi Investment Authority.png", alt: "Abu Dhabi Investment Authority", name: "Abu Dhabi Investment Authority" },
+                  { src: "/DEWA.png", alt: "DEWA", name: "DEWA" },
+                  { src: "/EWEC.png", alt: "EWEC", name: "EWEC" },
+                  { src: "/Khalifa University.png", alt: "Khalifa University", name: "Khalifa University" },
+                  { src: "/Ministry of Energy & Infrastructure UAE.png", alt: "Ministry of Energy & Infrastructure UAE", name: "Ministry of Energy & Infrastructure UAE" }
                 ].map((logo, index) => (
                   <div 
                     key={`sponsor-${index}`}

@@ -110,29 +110,35 @@ const Awards = () => {
       </section>
 
       {/* Award Categories */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative overflow-hidden">
+        {/* Background with gradient and pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">AWARD CATEGORIES</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-black mx-auto rounded-full"></div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-lg">AWARD CATEGORIES</h2>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 mx-auto rounded-full"></div>
           </div>
 
           {/* Individual Awards */}
           <div className="mb-16">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">Individual Awards</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-white drop-shadow-md">Individual Awards</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {individualAwards.map((category, index) => {
                 const Icon = category.icon;
                 return (
-                  <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary">
-                    <CardHeader className="bg-gradient-to-br from-primary/10 to-secondary/10">
+                  <Card key={index} className="overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 border-2 border-white/10 bg-white/95 backdrop-blur-sm">
+                    <CardHeader className="bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20">
                       <div className="flex items-center gap-3 mb-2">
-                        <Icon className="h-8 w-8 text-primary" />
-                        <CardTitle className="text-xl">{category.title}</CardTitle>
+                        <Icon className="h-8 w-8 text-blue-600" />
+                        <CardTitle className="text-xl text-slate-900">{category.title}</CardTitle>
                       </div>
                     </CardHeader>
                     <CardContent className="p-6">
-                      <p className="text-muted-foreground mb-4">
+                      <p className="text-slate-700 mb-4">
                         {category.description}
                       </p>
                       <Button className="w-full">REGISTER</Button>
@@ -145,20 +151,20 @@ const Awards = () => {
 
           {/* Private Sector Awards */}
           <div className="mb-16">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">Private Sector Awards</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-white drop-shadow-md">Private Sector Awards</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {privateSectorAwards.map((category, index) => {
                 const Icon = category.icon;
                 return (
-                  <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary">
-                    <CardHeader className="bg-gradient-to-br from-secondary/10 to-primary/10">
+                  <Card key={index} className="overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-300 border-2 border-white/10 bg-white/95 backdrop-blur-sm">
+                    <CardHeader className="bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-blue-500/20">
                       <div className="flex items-center gap-3 mb-2">
-                        <Icon className="h-8 w-8 text-secondary" />
-                        <CardTitle className="text-xl">{category.title}</CardTitle>
+                        <Icon className="h-8 w-8 text-indigo-600" />
+                        <CardTitle className="text-xl text-slate-900">{category.title}</CardTitle>
                       </div>
                     </CardHeader>
                     <CardContent className="p-6">
-                      <p className="text-muted-foreground mb-4">
+                      <p className="text-slate-700 mb-4">
                         {category.description}
                       </p>
                       <Button className="w-full">REGISTER</Button>
@@ -171,20 +177,20 @@ const Awards = () => {
 
           {/* Public Sector Awards */}
           <div className="mb-16">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">Public Sector Awards</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-white drop-shadow-md">Public Sector Awards</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {publicSectorAwards.map((category, index) => {
               const Icon = category.icon;
               return (
-                  <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary">
-                  <CardHeader className="bg-gradient-to-br from-accent/10 to-primary/10">
+                  <Card key={index} className="overflow-hidden hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 border-2 border-white/10 bg-white/95 backdrop-blur-sm">
+                  <CardHeader className="bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-indigo-500/20">
                     <div className="flex items-center gap-3 mb-2">
-                      <Icon className="h-8 w-8 text-accent" />
-                      <CardTitle className="text-xl">{category.title}</CardTitle>
+                      <Icon className="h-8 w-8 text-purple-600" />
+                      <CardTitle className="text-xl text-slate-900">{category.title}</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="p-6">
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-slate-700 mb-4">
                       {category.description}
                     </p>
                       <Button className="w-full">REGISTER</Button>
@@ -192,30 +198,30 @@ const Awards = () => {
                 </Card>
               );
             })}
+            </div>
           </div>
-        </div>
 
           {/* Project Awards */}
           <div className="mb-16">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">Project Awards</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-white drop-shadow-md">Project Awards</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {projectAwards.map((category, index) => {
                 const Icon = category.icon;
                 return (
-                  <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary">
-                    <CardHeader className="bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10">
+                  <Card key={index} className="overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 border-2 border-white/10 bg-white/95 backdrop-blur-sm">
+                    <CardHeader className="bg-gradient-to-br from-blue-500/20 via-cyan-500/20 to-indigo-500/20">
                       <div className="flex items-center gap-3 mb-2">
-                        <Icon className="h-8 w-8 text-primary" />
-                        <CardTitle className="text-xl">{category.title}</CardTitle>
-                  </div>
+                        <Icon className="h-8 w-8 text-blue-600" />
+                        <CardTitle className="text-xl text-slate-900">{category.title}</CardTitle>
+                      </div>
                     </CardHeader>
                     <CardContent className="p-6">
-                      <p className="text-muted-foreground mb-4">
+                      <p className="text-slate-700 mb-4">
                         {category.description}
                       </p>
                       <Button className="w-full">REGISTER</Button>
-                </CardContent>
-              </Card>
+                    </CardContent>
+                  </Card>
                 );
               })}
             </div>
