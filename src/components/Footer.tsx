@@ -6,8 +6,10 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">
-              Alternative Energy Summit & Award
+            <h3 className="text-xl font-black mb-4">
+              <span className="bg-gradient-to-r from-white via-primary-foreground to-white bg-clip-text text-transparent">
+                Alternative Energy Summit & Award
+              </span>
             </h3>
             <p className="text-primary-foreground/80 text-sm">
               Empowering the Future of Clean Energy & Sustainable Growth

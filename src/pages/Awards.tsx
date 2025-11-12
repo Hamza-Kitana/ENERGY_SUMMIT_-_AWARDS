@@ -95,9 +95,16 @@ const Awards = () => {
             <div className="inline-block mb-6">
               <Trophy className="h-16 w-16 sm:h-20 sm:w-20 text-accent" />
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-              ENERGY EXCELLENCE AWARDS 2026
-            </h1>
+            <div className="flex flex-col items-center gap-4 mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+                ENERGY EXCELLENCE AWARDS
+              </h1>
+              <div className="px-6 py-3 bg-gradient-to-r from-primary via-secondary to-primary rounded-full border-2 border-white/50 shadow-2xl backdrop-blur-sm">
+                <span className="text-3xl sm:text-4xl md:text-5xl font-black text-white" style={{textShadow: '0 2px 10px rgba(0,0,0,0.5)'}}>
+                  2026
+                </span>
+              </div>
+            </div>
             <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-black mx-auto rounded-full mb-8"></div>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8">
               The Energy Excellence Awards celebrate organizations and individuals driving innovation, sustainability, and excellence in the energy transition. The awards promote collaboration and recognize contributions that advance the UAE's energy and climate goals.

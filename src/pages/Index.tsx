@@ -5,7 +5,8 @@ import Footer from "@/components/Footer";
 import EnergyBackground3D from "@/components/EnergyBackground3D";
 import FloatingElements from "@/components/FloatingElements";
 import SectionNavigation from "@/components/SectionNavigation";
-import { Calendar, MapPin, Users, Award, ArrowRight, Clock, Trophy, Star, Award as AwardIcon, ArrowUp, CheckCircle2, Lightbulb, TrendingUp, Network, Zap, Target, Globe, Shield, MessageSquare, HelpCircle, ChevronDown, Building2 } from "lucide-react";
+import ProfileCard from "@/components/ProfileCard";
+import { Calendar, MapPin, Users, Award, ArrowRight, Clock, Trophy, Star, Award as AwardIcon, ArrowUp, CheckCircle2, Lightbulb, TrendingUp, Network, Zap, Target, Globe, Shield, MessageSquare, HelpCircle, ChevronDown, Building2, Wind, Gauge, Car, Cpu, Wrench, Scale, Battery, Plug, Factory, FileText, Droplet } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CardHeader, CardTitle } from "@/components/ui/card";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
@@ -383,17 +384,6 @@ const Index = () => {
     { icon: Award, value: 45, suffix: "+", label: "Sponsors & Exhibitors" },
     { icon: Globe, value: 25, suffix: "+", label: "Participating Countries" },
   ];
-  const heroLogos = [
-    "/Ministry of Energy & Infrastructure UAE.png",
-    "/ADNOC.png",
-    "/DEWA.png",
-    "/Masdar.png",
-    "/EWEC.png",
-    "/Abu Dhabi National Energy Company.png",
-    "/Siemens Energy.png",
-    "/ACWA Power.png",
-  ];
-  
   const statsSectionRef = useScrollAnimation(0.2);
   const aboutSectionRef = useScrollAnimation(0.2);
   const highlightsSectionRef = useScrollAnimation(0.1);
@@ -975,14 +965,22 @@ const Index = () => {
           <div className="max-w-5xl mx-auto text-center">
             <div className="mb-8">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
-                <span className="bg-gradient-to-r from-[#06b6d4] via-[#10b981] to-[#f59e0b] bg-[length:300%_100%] bg-clip-text text-transparent animate-gradient-slow animate-text-glow-strong animate-hue-slow">
-                  ENERGY SUMMIT & AWARDS 2026
-                </span>
+                <div className="relative flex items-center justify-center py-8 sm:py-12 md:py-16">
+                  {/* Background 2026 - More visible */}
+                  <span className="absolute text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-black opacity-25 text-white select-none pointer-events-none" style={{textShadow: '0 0 30px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.15)'}}>
+                    2026
+                  </span>
+                  {/* Foreground text */}
+                  <span className="relative z-10 font-black bg-gradient-to-r from-[#06b6d4] via-[#10b981] to-[#f59e0b] bg-[length:300%_100%] bg-clip-text text-transparent animate-gradient-slow animate-text-glow-strong animate-hue-slow px-4 py-2 whitespace-nowrap" style={{lineHeight: '1.2'}}>
+                    Alternative Energy Summit & Award
+                  </span>
+                </div>
               </h1>
-              <p className="text-xl md:text-2xl text-white mb-4 font-semibold">ABU DHABI, UAE</p>
+              <p className="text-xl md:text-2xl text-white mb-4 font-semibold" style={{textShadow: '0 2px 8px rgba(0,0,0,0.6)'}}>ABU DHABI, UAE</p>
             </div>
             <p className="text-xl md:text-2xl lg:text-3xl text-white mb-10 font-light max-w-3xl mx-auto">
-              Empowering the Future of Clean Energy & Sustainable Growth
+              Empowering the Future of Clean Energy<br />
+              & Sustainable Growth
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-4">
@@ -1008,25 +1006,6 @@ const Index = () => {
                 <MapPin className="h-5 w-5 md:h-6 md:w-6 text-white" style={{filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))'}} />
                 <span>Venue: TBD</span>
               </span>
-            </div>
-            {/* Scrolling logos row */}
-            <div className="relative overflow-hidden mb-6">
-              <div className="flex items-center gap-10 animate-scroll">
-                {[...heroLogos, ...heroLogos].map((src, i) => (
-                  <img
-                    key={`${src}-${i}`}
-                    src={src}
-                    alt="partner logo"
-                    className="h-36 md:h-40 w-auto object-contain mix-blend-multiply hover:opacity-100 transition-opacity"
-                    onError={(e) => {
-                      const svg = `<svg width="160" height="48" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="48" fill="none"/><text x="50%" y="50%" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" dy=".3em">Logo</text></svg>`;
-                      e.currentTarget.src = `data:image/svg+xml,${encodeURIComponent(svg)}`;
-                    }}
-                    loading="lazy"
-                    draggable={false}
-                  />
-                ))}
-              </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-0">
               <HeroStatItem 
@@ -1350,93 +1329,40 @@ const Index = () => {
           })}
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
                 JOB TITLES EXPECTED
               </span>
             </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full mb-4"></div>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full"></div>
           </div>
 
-          {/* Marquee stripes (top: R->L, bottom: L->R) */}
-          <div className="space-y-4 mb-6">
-            <div className="relative overflow-x-hidden">
-              <div className="inline-flex items-center gap-8 animate-rtl whitespace-nowrap">
-                {[...jobTitles, ...jobTitles].map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <div 
-                      key={`mt-${index}-${item.title}`}
-                      className="relative w-[440px] sm:w-[520px] md:w-[600px] h-56 sm:h-60 md:h-64 rounded-2xl overflow-hidden border border-primary/30 shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition-shadow duration-300 flex-shrink-0"
-                    >
-                      <img 
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.src = "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=600&h=400&fit=crop&q=80";
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                      <div className="absolute bottom-0 left-0 right-0 p-6 flex items-center justify-center gap-3 w-full">
-                        <Icon className="h-7 w-7 text-white drop-shadow" />
-                        <span className="text-lg sm:text-xl font-semibold text-white drop-shadow text-center">
-                          {item.title}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="relative overflow-x-hidden">
-              <div className="inline-flex items-center gap-8 animate-ltr whitespace-nowrap">
-                {[...jobTitles, ...jobTitles].map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <div 
-                      key={`mb-${index}-${item.title}`}
-                      className="relative w-[440px] sm:w-[520px] md:w-[600px] h-56 sm:h-60 md:h-64 rounded-2xl overflow-hidden border border-secondary/30 shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition-shadow duration-300 flex-shrink-0"
-                    >
-                      <img 
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.src = "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=600&h=400&fit=crop&q=80";
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                      <div className="absolute bottom-0 left-0 right-0 p-6 flex items-center justify-center gap-3 w-full">
-                        <Icon className="h-7 w-7 text-white drop-shadow" />
-                        <span className="text-lg sm:text-xl font-semibold text-white drop-shadow text-center">
-                          {item.title}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Inspirational Quote */}
-          <div className="max-w-4xl mx-auto text-center mt-16 px-4">
-            <div className="relative">
-              <div className="absolute -top-6 -left-4 text-7xl text-primary/10 font-serif">"</div>
-              <p className="text-xl md:text-2xl lg:text-3xl font-light text-foreground leading-relaxed mb-4 relative z-10">
-                Shaping the future of energy where innovation meets sustainability
-              </p>
-              <div className="absolute -bottom-6 -right-4 text-7xl text-secondary/10 font-serif">"</div>
-            </div>
-            <div className="flex items-center justify-center gap-3 mt-6">
-              <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
-              <Zap className="h-5 w-5 text-primary animate-pulse" />
-              <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-secondary to-transparent"></div>
-            </div>
+          {/* Job Titles Cards */}
+          <div className="grid grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto">
+            {jobTitles.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div 
+                  key={index}
+                  className="w-full h-[160px] sm:h-[170px] md:h-[180px]"
+                >
+                  <ProfileCard
+                    name={item.title}
+                    title=""
+                    avatarUrl=""
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    showUserInfo={false}
+                    showIcon={true}
+                    icon={Icon}
+                    innerGradient="linear-gradient(145deg, rgba(227, 93%, 18%, 0.3) 0%, rgba(188, 24%, 35%, 0.3) 100%)"
+                    behindGlowColor="rgba(59, 130, 246, 0.5)"
+                    className="w-full h-full"
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1468,10 +1394,10 @@ const Index = () => {
             </div>
 
             <div className="flex flex-wrap justify-center items-center gap-6 mb-12">
-              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 rotate-2 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 w-72 sm:w-80 md:w-96 rotate-6 hover:rotate-0 animate-fade-in-up" style={{ animationDelay: '0ms' }}>
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Lightbulb className="h-8 w-8 text-primary" />
+                    <Wind className="h-8 w-8 text-primary" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Renewable Energy Equipment Manufacturers</h4>
@@ -1480,10 +1406,10 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 -rotate-1 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 w-72 sm:w-80 md:w-96 -rotate-4 hover:rotate-0 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Network className="h-8 w-8 text-primary" />
+                    <Battery className="h-8 w-8 text-primary" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground text-sm sm:text-base">Smart Grid & Energy Storage Companies</h4>
@@ -1491,10 +1417,10 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 rotate-1 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 w-72 sm:w-80 md:w-96 rotate-3 hover:rotate-0 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Globe className="h-8 w-8 text-secondary" />
+                    <Droplet className="h-8 w-8 text-secondary" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground text-sm sm:text-base">Carbon Capture & Hydrogen Technology Providers</h4>
@@ -1502,10 +1428,10 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 -rotate-2 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 w-72 sm:w-80 md:w-96 -rotate-5 hover:rotate-0 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Target className="h-8 w-8 text-primary" />
+                    <Plug className="h-8 w-8 text-primary" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground text-sm sm:text-base">Smart Metering and IoT Solution Developers</h4>
@@ -1513,10 +1439,10 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 rotate-3 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 w-72 sm:w-80 md:w-96 rotate-1 hover:rotate-0 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Zap className="h-8 w-8 text-secondary" />
+                    <Car className="h-8 w-8 text-secondary" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground text-sm sm:text-base">Clean Mobility & EV Infrastructure Firms</h4>
@@ -1524,10 +1450,10 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 -rotate-1 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 w-72 sm:w-80 md:w-96 -rotate-3 hover:rotate-0 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <TrendingUp className="h-8 w-8 text-primary" />
+                    <Cpu className="h-8 w-8 text-primary" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground text-sm sm:text-base">Digital Energy and AI-driven Analytics Companies</h4>
@@ -1535,10 +1461,10 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 rotate-2 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-secondary/30 hover:border-secondary/60 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 w-72 sm:w-80 md:w-96 rotate-5 hover:rotate-0 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Building2 className="h-8 w-8 text-secondary" />
+                    <Factory className="h-8 w-8 text-secondary" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground text-sm sm:text-base">Engineering, Procurement & Construction (EPC) Firms</h4>
@@ -1546,72 +1472,16 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-52 sm:w-56 md:w-64 -rotate-2 hover:rotate-0">
+              <div className="group relative bg-white/90 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg border-2 border-primary/30 hover:border-primary/60 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 w-72 sm:w-80 md:w-96 -rotate-6 hover:rotate-0 animate-fade-in-up" style={{ animationDelay: '700ms' }}>
                 <div className="flex flex-col items-center text-center gap-3">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Star className="h-8 w-8 text-primary" />
+                    <FileText className="h-8 w-8 text-primary" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Financial & Legal Advisory Firms</h4>
                     <p className="text-xs text-muted-foreground">specialized in energy projects</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Ideal Sponsors */}
-          <div className="w-full">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <Trophy className="h-8 w-8 text-secondary" />
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-                Ideal Sponsors
-              </h3>
-            </div>
-
-            <div className="relative overflow-x-hidden">
-              <div className="inline-flex items-center gap-8 animate-scroll whitespace-nowrap">
-                {[
-                  { src: "/ADNOC.png", alt: "ADNOC", name: "ADNOC" },
-                  { src: "/Masdar.png", alt: "Masdar", name: "Masdar" },
-                  { src: "/Abu Dhabi National Energy Company.png", alt: "TAQA", name: "TAQA" },
-                  { src: "/Siemens Energy.png", alt: "Siemens Energy", name: "Siemens Energy" },
-                  { src: "/ACWA Power.png", alt: "ACWA Power", name: "ACWA Power" },
-                  { src: "/Emirates NBD.png", alt: "Emirates NBD", name: "Emirates NBD" },
-                  { src: "/First Abu Dhabi Bank.png", alt: "First Abu Dhabi Bank", name: "First Abu Dhabi Bank" },
-                  { src: "/Abu Dhabi Investment Authority.png", alt: "Abu Dhabi Investment Authority", name: "Abu Dhabi Investment Authority" },
-                  { src: "/DEWA.png", alt: "DEWA", name: "DEWA" },
-                  { src: "/EWEC.png", alt: "EWEC", name: "EWEC" },
-                  { src: "/Khalifa University.png", alt: "Khalifa University", name: "Khalifa University" },
-                  { src: "/Ministry of Energy & Infrastructure UAE.png", alt: "Ministry of Energy & Infrastructure UAE", name: "Ministry of Energy & Infrastructure UAE" },
-                  { src: "/ADNOC.png", alt: "ADNOC", name: "ADNOC" },
-                  { src: "/Masdar.png", alt: "Masdar", name: "Masdar" },
-                  { src: "/Abu Dhabi National Energy Company.png", alt: "TAQA", name: "TAQA" },
-                  { src: "/Siemens Energy.png", alt: "Siemens Energy", name: "Siemens Energy" },
-                  { src: "/ACWA Power.png", alt: "ACWA Power", name: "ACWA Power" },
-                  { src: "/Emirates NBD.png", alt: "Emirates NBD", name: "Emirates NBD" },
-                  { src: "/First Abu Dhabi Bank.png", alt: "First Abu Dhabi Bank", name: "First Abu Dhabi Bank" },
-                  { src: "/Abu Dhabi Investment Authority.png", alt: "Abu Dhabi Investment Authority", name: "Abu Dhabi Investment Authority" },
-                  { src: "/DEWA.png", alt: "DEWA", name: "DEWA" },
-                  { src: "/EWEC.png", alt: "EWEC", name: "EWEC" },
-                  { src: "/Khalifa University.png", alt: "Khalifa University", name: "Khalifa University" },
-                  { src: "/Ministry of Energy & Infrastructure UAE.png", alt: "Ministry of Energy & Infrastructure UAE", name: "Ministry of Energy & Infrastructure UAE" }
-                ].map((logo, index) => (
-                  <div 
-                    key={`sponsor-${index}`}
-                    className="flex-shrink-0 bg-white p-6 rounded-xl shadow-lg border border-primary/20 w-40 h-40 flex items-center justify-center"
-                  >
-                    <img 
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="w-full h-auto max-h-full object-contain mix-blend-multiply"
-                      onError={(e) => {
-                        const svg = `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="100" fill="none"/><text x="50%" y="50%" font-family="Arial, sans-serif" font-size="14" fill="#6b7280" text-anchor="middle" dy=".3em" font-weight="600">${logo.name}</text></svg>`;
-                        e.currentTarget.src = `data:image/svg+xml,${encodeURIComponent(svg)}`;
-                      }}
-                    />
-                  </div>
-                ))}
               </div>
             </div>
           </div>
