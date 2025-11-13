@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Home, Calendar, Users, Briefcase, Trophy, ChevronRight, ChevronLeft } from "lucide-react";
+import { Home, Calendar, Users, Briefcase, Trophy, Handshake, ChevronRight, ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const SectionNavigation = () => {
@@ -12,6 +12,7 @@ const SectionNavigation = () => {
     { id: "participation", label: "Participation", icon: Users },
     { id: "who-attend", label: "Attendees", icon: Briefcase },
     { id: "job-titles", label: "Job Titles", icon: Trophy },
+    { id: "sponsor-exhibit", label: "Sponsor", icon: Handshake },
   ];
 
   useEffect(() => {

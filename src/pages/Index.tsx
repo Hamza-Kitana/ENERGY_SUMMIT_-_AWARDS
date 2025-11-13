@@ -1330,20 +1330,20 @@ const Index = () => {
       </section>
 
       {/* Who Should Sponsor or Exhibit Section */}
-      <section className="py-20 bg-gradient-to-br from-background via-primary/5 to-background relative overflow-hidden">
+      <section id="sponsor-exhibit" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-background via-primary/5 to-background relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary rounded-full blur-3xl"></div>
         </div>
         
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 px-2">
               <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
                 WHO SHOULD SPONSOR OR EXHIBIT
               </span>
             </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full"></div>
+            <div className="w-24 sm:w-32 h-1 sm:h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full"></div>
           </div>
 
           {/* Vendors & Solution Providers */}
