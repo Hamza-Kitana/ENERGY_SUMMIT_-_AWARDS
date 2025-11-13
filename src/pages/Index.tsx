@@ -1,16 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import EnergyBackground3D from "@/components/EnergyBackground3D";
 import FloatingElements from "@/components/FloatingElements";
 import SectionNavigation from "@/components/SectionNavigation";
 import ProfileCard from "@/components/ProfileCard";
-import { Calendar, MapPin, Users, Award, ArrowRight, Clock, Trophy, Star, Award as AwardIcon, ArrowUp, CheckCircle2, Lightbulb, TrendingUp, Network, Zap, Target, Globe, Shield, MessageSquare, HelpCircle, ChevronDown, Building2, Wind, Gauge, Car, Cpu, Wrench, Scale, Battery, Plug, Factory, FileText, Droplet } from "lucide-react";
+import { Calendar, MapPin, Users, Award, ArrowRight, Clock, Trophy, Star, Award as AwardIcon, ArrowUp, CheckCircle2, Lightbulb, TrendingUp, Network, Zap, Target, Globe, Shield, Building2, Wind, Car, Cpu, Battery, Plug, Factory, FileText, Droplet, GraduationCap, Briefcase } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { CardHeader, CardTitle } from "@/components/ui/card";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import awardsBg from "@/assets/awards-bg.jpg";
 import { Link } from "react-router-dom";
 import heroEnergy from "@/assets/hero-energy.jpg";
@@ -168,15 +165,6 @@ interface ExpectedParticipationCardProps {
   delay: number;
 }
 
-interface Company {
-  name: string;
-  logo: string;
-  description: string;
-  category: string;
-  website?: string;
-  details: string[];
-}
-
 const ExpectedParticipationCard = ({ icon, value, suffix, label, description, color, isVisible, delay }: ExpectedParticipationCardProps) => {
   const counter = useCounter({ 
     end: value, 
@@ -230,153 +218,6 @@ const ExpectedParticipationCard = ({ icon, value, suffix, label, description, co
   );
 };
 
-const CompanyLogoCard = ({ company, index, isVisible }: { company: Company; index: number; isVisible: boolean }) => {
-  // Calculate delay based on index for staggered appearance
-  // First: 0ms, Next 2: 200ms, Next 3: 400ms, Rest: 600ms
-  const getDelay = (idx: number) => {
-    if (idx === 0) return 0;
-    if (idx >= 1 && idx <= 2) return 200;
-    if (idx >= 3 && idx <= 5) return 400;
-    return 600;
-  };
-
-  const cardDelay = getDelay(index);
-  const logoDelay = cardDelay + 200;
-
-  return (
-    <Dialog>
-      <HoverCard>
-        <HoverCardTrigger asChild>
-          <DialogTrigger asChild>
-                   <div
-                     className={cn(
-                       "group relative bg-white rounded-full aspect-square p-6 sm:p-8 md:p-9 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-primary/20 hover:border-primary/40 cursor-pointer hover:scale-105 md:hover:scale-110 flex flex-col items-center justify-center overflow-hidden",
-                       isVisible
-                         ? "opacity-100 scale-100 translate-y-0 rotate-0"
-                         : "opacity-0 scale-50 translate-y-20 rotate-12"
-                     )}
-                     style={{
-                       transitionDelay: `${cardDelay}ms`,
-                       transition: 'opacity 1s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                     }}
-                   >
-              {/* Logo container */}
-              <div className={cn(
-                "relative z-10 flex items-center justify-center w-full h-full",
-                company.name === "Ministry of Energy & Infrastructure UAE" ? "p-0.5 sm:p-1 md:p-2" : "p-1 sm:p-2 md:p-3"
-              )}>
-                <img
-                  src={company.logo}
-                  alt={company.name}
-                  className={cn(
-                    "object-contain transition-all duration-500",
-                    company.name === "Ministry of Energy & Infrastructure UAE"
-                      ? "w-full h-full"
-                      : "w-full h-full",
-                    isVisible
-                      ? company.name === "Ministry of Energy & Infrastructure UAE"
-                        ? "opacity-100 scale-110"
-                        : "opacity-100 scale-100"
-                      : "opacity-0 scale-0"
-                  )}
-                  style={{ 
-                    transitionDelay: `${logoDelay}ms`,
-                    transition: 'opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                  }}
-                  onError={(e) => {
-                    // Create a simple SVG placeholder instead of using external service
-                    const svg = `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="100" fill="#f3f4f6"/><text x="50%" y="50%" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" dy=".3em">Logo</text></svg>`;
-                    e.currentTarget.src = `data:image/svg+xml,${encodeURIComponent(svg)}`;
-                  }}
-                />
-              </div>
-              
-              {/* Decorative ring on hover */}
-              <div className="absolute inset-0 rounded-full border-2 border-primary/0 group-hover:border-primary/30 transition-all duration-300"></div>
-            </div>
-          </DialogTrigger>
-        </HoverCardTrigger>
-        <HoverCardContent 
-          side="top" 
-          className="w-auto max-w-xs p-2 bg-transparent border-0 shadow-none"
-        >
-          <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-primary/20">
-            <h4 className="font-semibold text-sm text-foreground text-center whitespace-nowrap">{company.name}</h4>
-          </div>
-        </HoverCardContent>
-      </HoverCard>
-      
-      <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
-        <DialogHeader>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-20 h-20 rounded-full bg-white p-4 shadow-md flex items-center justify-center flex-shrink-0">
-              <img
-                src={company.logo}
-                alt={company.name}
-                className="max-h-full max-w-full object-contain"
-                onError={(e) => {
-                  // Create a simple SVG placeholder instead of using external service
-                  const svg = `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="100" fill="#f3f4f6"/><text x="50%" y="50%" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" dy=".3em">Logo</text></svg>`;
-                  e.currentTarget.src = `data:image/svg+xml,${encodeURIComponent(svg)}`;
-                }}
-              />
-            </div>
-            <div className="flex-1">
-              <DialogTitle className="text-2xl mb-2">{company.name}</DialogTitle>
-              <DialogDescription className="text-base">{company.description}</DialogDescription>
-            </div>
-          </div>
-        </DialogHeader>
-        
-        <div className="space-y-6 mt-4">
-          <div>
-            <h3 className="font-bold text-lg text-foreground mb-3 flex items-center gap-2">
-              <Trophy className="h-5 w-5 text-primary" />
-              Role in the Event
-            </h3>
-            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-4 border-l-4 border-primary">
-              <p className="text-foreground leading-relaxed">
-                {company.name} plays a crucial role in the Alternative Energy Summit & Awards 2026, 
-                contributing to the region's energy transition through {company.category.toLowerCase()}. 
-                As a key participant, they will share insights, showcase innovations, and collaborate 
-                with industry leaders to drive sustainable energy solutions forward.
-              </p>
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="font-bold text-lg text-foreground mb-3 flex items-center gap-2">
-              <Star className="h-5 w-5 text-secondary" />
-              Key Highlights
-            </h3>
-            <ul className="space-y-2">
-              {company.details.map((detail, index) => (
-                <li key={index} className="flex items-start gap-3 p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
-                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground">{detail}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          {company.website && (
-            <div className="pt-4 border-t">
-              <a
-                href={company.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:opacity-90 transition-opacity font-semibold"
-              >
-                Visit Website <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          )}
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-};
-
 const Index = () => {
   const stats = [
     { icon: Users, value: 800, suffix: "+", label: "Total Attendees" },
@@ -418,165 +259,6 @@ const Index = () => {
     { title: "Project Developers & Investment Directors", icon: TrendingUp, image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=300&fit=crop&q=80" },
     { title: "Policy Advisors & Government Relations Heads", icon: Network, image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=300&fit=crop&q=80" },
     { title: "Research & Development Directors", icon: Star, image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=300&fit=crop&q=80" }
-  ];
-
-  const companies: Company[] = [
-    {
-      name: "Ministry of Energy & Infrastructure UAE",
-      logo: "/Ministry of Energy & Infrastructure UAE.png",
-      description: "Leading the UAE's energy transition and infrastructure development",
-      category: "Government Authority",
-      website: "https://www.moenergy.gov.ae",
-      details: [
-        "Oversees national energy policy and strategy",
-        "Drives UAE's Net Zero 2050 initiative",
-        "Manages critical infrastructure projects",
-        "Promotes renewable energy adoption"
-      ]
-    },
-    {
-      name: "ADNOC",
-      logo: "/ADNOC.png",
-      description: "Abu Dhabi National Oil Company - Leading energy transition",
-      category: "Oil & Gas",
-      website: "https://www.adnoc.ae",
-      details: [
-        "One of the world's leading energy producers",
-        "Committed to net-zero by 2045",
-        "Investing in hydrogen and carbon capture",
-        "Leading decarbonization efforts"
-      ]
-    },
-    {
-      name: "DEWA",
-      logo: "/DEWA.png",
-      description: "Dubai Electricity and Water Authority",
-      category: "Utilities",
-      website: "https://www.dewa.gov.ae",
-      details: [
-        "Dubai's exclusive electricity and water provider",
-        "World's largest single-site solar park",
-        "Pioneering smart grid technologies",
-        "100% renewable energy target by 2050"
-      ]
-    },
-    {
-      name: "Masdar",
-      logo: "/Masdar.png",
-      description: "Abu Dhabi Future Energy Company",
-      category: "Renewable Energy",
-      website: "https://www.masdar.ae",
-      details: [
-        "Global leader in renewable energy",
-        "Developing green hydrogen projects",
-        "Operating in 40+ countries",
-        "Targeting 100GW renewable capacity by 2030"
-      ]
-    },
-    {
-      name: "EWEC",
-      logo: "/EWEC.png",
-      description: "Emirates Water and Electricity Company",
-      category: "Utilities",
-      website: "https://www.ewec.ae",
-      details: [
-        "Abu Dhabi's power and water procurer",
-        "Managing world's largest solar projects",
-        "Driving renewable energy adoption",
-        "Ensuring sustainable water supply"
-      ]
-    },
-    {
-      name: "TAQA",
-      logo: "/Abu Dhabi National Energy Company.png",
-      description: "Abu Dhabi National Energy Company",
-      category: "Energy",
-      website: "https://www.taqa.com",
-      details: [
-        "Leading integrated utilities company",
-        "Operating across 11 countries",
-        "Investing in renewable energy",
-        "Committed to sustainable operations"
-      ]
-    },
-    {
-      name: "Siemens Energy",
-      logo: "/Siemens Energy.png",
-      description: "Global energy technology company",
-      category: "Technology",
-      website: "https://www.siemens-energy.com",
-      details: [
-        "Leading energy technology solutions",
-        "Hydrogen and renewable energy systems",
-        "Grid technologies and digitalization",
-        "Supporting global energy transition"
-      ]
-    },
-    {
-      name: "ACWA Power",
-      logo: "/ACWA Power.png",
-      description: "Leading developer, investor and operator of power generation and desalinated water plants",
-      category: "Renewable Energy",
-      website: "https://www.acwapower.com",
-      details: [
-        "Global leader in renewable energy",
-        "Operating in 13 countries",
-        "Focus on solar, wind, and green hydrogen",
-        "Committed to sustainable development"
-      ]
-    },
-    {
-      name: "First Abu Dhabi Bank",
-      logo: "/First Abu Dhabi Bank.png",
-      description: "UAE's largest bank and financial services provider",
-      category: "Financial Services",
-      website: "https://www.bankfab.com",
-      details: [
-        "Leading green finance initiatives",
-        "Supporting renewable energy projects",
-        "ESG-focused investments",
-        "Sustainable banking solutions"
-      ]
-    },
-    {
-      name: "Emirates NBD",
-      logo: "/Emirates NBD.png",
-      description: "Leading banking group in the region",
-      category: "Financial Services",
-      website: "https://www.emiratesnbd.com",
-      details: [
-        "Sustainable finance solutions",
-        "Green bond issuances",
-        "ESG integration in operations",
-        "Supporting clean energy projects"
-      ]
-    },
-    {
-      name: "Abu Dhabi Investment Authority",
-      logo: "/Abu Dhabi Investment Authority.png",
-      description: "Sovereign wealth fund of Abu Dhabi",
-      category: "Investment",
-      website: "https://www.adia.ae",
-      details: [
-        "Long-term sustainable investments",
-        "ESG-focused portfolio",
-        "Renewable energy investments",
-        "Global investment leadership"
-      ]
-    },
-    {
-      name: "Khalifa University",
-      logo: "/Khalifa University.png",
-      description: "Leading research university in Abu Dhabi",
-      category: "Academic & Research",
-      website: "https://www.ku.ac.ae",
-      details: [
-        "Advanced energy research",
-        "Renewable energy technologies",
-        "Hydrogen and fuel cell research",
-        "Innovation in sustainability"
-      ]
-    }
   ];
   
   useEffect(() => {
@@ -961,53 +643,53 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
         <EnergyBackground3D />
         <FloatingElements />
-        <div className="container mx-auto px-4 relative z-10 pt-20">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10 pt-20 pb-8 sm:pb-12">
           <div className="max-w-5xl mx-auto text-center">
-            <div className="mb-8">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
-                <div className="relative flex items-center justify-center py-8 sm:py-12 md:py-16">
-                  {/* Background 2026 - More visible */}
-                  <span className="absolute text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-black opacity-25 text-white select-none pointer-events-none" style={{textShadow: '0 0 30px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.15)'}}>
-                    2026
-                  </span>
-                  {/* Foreground text */}
-                  <span className="relative z-10 font-black bg-gradient-to-r from-[#06b6d4] via-[#10b981] to-[#f59e0b] bg-[length:300%_100%] bg-clip-text text-transparent animate-gradient-slow animate-text-glow-strong animate-hue-slow px-4 py-2 whitespace-nowrap" style={{lineHeight: '1.2'}}>
+            <div className="mb-6 sm:mb-8">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 leading-tight tracking-tight">
+                <div className="relative flex flex-col items-center justify-center py-4 sm:py-8 md:py-12 lg:py-16">
+                  {/* Title Above 2026 */}
+                  <span className="relative z-10 font-black text-sky-300 uppercase whitespace-nowrap mb-2 sm:mb-4 text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl" style={{lineHeight: '1.3', textShadow: '0 2px 8px rgba(0,0,0,0.3)'}}>
                     Alternative Energy Summit & Award
+                  </span>
+                  {/* Background 2026 - More visible */}
+                  <span className="absolute text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] font-black opacity-25 text-white select-none pointer-events-none -translate-y-4 sm:-translate-y-6 md:-translate-y-8" style={{textShadow: '0 0 30px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.15)'}}>
+                    2026
                   </span>
                 </div>
               </h1>
-              <p className="text-xl md:text-2xl text-white mb-4 font-semibold" style={{textShadow: '0 2px 8px rgba(0,0,0,0.6)'}}>ABU DHABI, UAE</p>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-3 sm:mb-4 font-semibold px-2" style={{textShadow: '0 2px 8px rgba(0,0,0,0.6)'}}>ABU DHABI, UAE</p>
             </div>
-            <p className="text-xl md:text-2xl lg:text-3xl text-white mb-10 font-light max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white mb-6 sm:mb-10 font-light max-w-3xl mx-auto px-2">
               Empowering the Future of Clean Energy<br />
               & Sustainable Growth
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-4">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-4 sm:mb-6 px-2">
               <Link to="/register" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-7 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 font-semibold">
+                <Button size="lg" className="w-full sm:w-auto text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 font-semibold">
                   REGISTER NOW
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </Link>
               <Link to="/happenings" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-7 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0 font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <Button size="lg" className="w-full sm:w-auto text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0 font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                   VIEW SCHEDULE
                 </Button>
               </Link>
             </div>
-            <div className="flex items-center justify-center gap-4 text-white text-lg md:text-xl mb-8 font-semibold" style={{textShadow: '0 2px 8px rgba(0,0,0,0.6)'}}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-white text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 font-semibold px-2" style={{textShadow: '0 2px 8px rgba(0,0,0,0.6)'}}>
               <span className="inline-flex items-center gap-2">
-                <Calendar className="h-5 w-5 md:h-6 md:w-6 text-white" style={{filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))'}} />
+                <Calendar className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" style={{filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))'}} />
                 <span>Date: TBD</span>
               </span>
-              <span className="opacity-80">•</span>
+              <span className="opacity-80 hidden sm:inline">•</span>
               <span className="inline-flex items-center gap-2">
-                <MapPin className="h-5 w-5 md:h-6 md:w-6 text-white" style={{filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))'}} />
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" style={{filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))'}} />
                 <span>Venue: TBD</span>
               </span>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-0">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto mb-0 px-2">
               <HeroStatItem 
                 value={800} 
                 suffix="+" 
@@ -1042,25 +724,25 @@ const Index = () => {
       </section>
 
       {/* Event Overview Section */}
-      <section id="about" className="py-20 bg-gradient-to-br from-white via-primary/5 to-white relative">
-        <div className="container mx-auto px-4">
+      <section id="about" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-white via-primary/5 to-white relative">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-7xl mx-auto opacity-100 translate-y-0">
-            <div className="text-center mb-8">
-              <div className="bg-black/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-black/20 shadow-lg inline-block">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <div className="text-center mb-6 sm:mb-8">
+              <div className="bg-black/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 md:p-8 border border-black/20 shadow-lg inline-block">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
                   <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
                     ABOUT THE EVENT
                   </span>
                 </h2>
-                <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full mb-4"></div>
+                <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full mb-3 sm:mb-4"></div>
               </div>
             </div>
             
             {/* Main Event Description with Image */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start mb-6 sm:mb-8">
               {/* Box containing text and cards */}
-              <div className="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-primary/20">
-                <p className="text-base text-white leading-relaxed font-normal mb-6">
+              <div className="bg-black/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-2xl border-2 border-primary/20">
+                <p className="text-sm sm:text-base text-white leading-relaxed font-normal mb-4 sm:mb-6">
                   The <strong className="text-primary">Energy Summit & Awards 2026 – Abu Dhabi</strong> is the region's premier platform dedicated to accelerating the transition toward clean, sustainable, and secure energy systems. 
                   The event will unite regional leaders, government representatives, energy executives, innovators, and investors to discuss policy frameworks, 
                   emerging technologies, and investment strategies shaping the global energy future.
@@ -1243,7 +925,7 @@ const Index = () => {
       </section>
 
       {/* Who Will Attend Section */}
-      <section id="who-attend" className="py-20 relative overflow-hidden" ref={whoAttendRef.ref}>
+      <section id="who-attend" className="py-12 sm:py-16 md:py-20 relative overflow-hidden" ref={whoAttendRef.ref}>
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <video
@@ -1260,41 +942,290 @@ const Index = () => {
           {/* Overlay (غباش) */}
           <div className="absolute inset-0 bg-white/60"></div>
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-lg">
                 WHO WILL ATTEND
               </span>
             </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full mb-4"></div>
+            <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full mb-4 sm:mb-6"></div>
+            <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto px-2">
+              Expected delegate breakdown by category
+            </p>
           </div>
 
-          <div className="max-w-7xl mx-auto">
-            <h3 className="text-xl md:text-2xl font-bold text-center mb-8">
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-lg">
-                Primary Market Participants
+          <div className="max-w-6xl mx-auto">
+            {/* Desktop Table View */}
+            <div className="hidden md:block bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-2xl border-2 border-primary/20 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-primary via-secondary to-primary">
+                      <th className="px-4 sm:px-6 py-2 sm:py-3 text-left text-white font-bold text-sm sm:text-base">Category</th>
+                      <th className="px-4 sm:px-6 py-2 sm:py-3 text-center text-white font-bold text-sm sm:text-base">% of Delegates</th>
+                      <th className="px-4 sm:px-6 py-2 sm:py-3 text-left text-white font-bold text-sm sm:text-base">Typical Job Titles</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="group border-b border-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-transparent transition-all duration-300 hover:shadow-lg">
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                          </div>
+                          <span className="font-bold text-foreground text-xs sm:text-sm">Government & Semi-Government</span>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                        <div className="flex flex-col items-center gap-1.5">
+                          <span className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white font-black text-base sm:text-xl shadow-xl group-hover:scale-110 transition-transform">
+                            45%
               </span>
-            </h3>
-            <p className="text-center text-lg text-foreground/80 mb-10 max-w-3xl mx-auto">
-              Leading organizations and companies driving the energy transition in the UAE and region
-            </p>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 md:gap-8">
-              {companies.map((company, index) => (
-                <CompanyLogoCard 
-                  key={index} 
-                  company={company} 
-                  index={index}
-                  isVisible={whoAttendRef.isVisible}
-                />
-              ))}
+                          <div className="w-16 sm:w-20 h-1.5 bg-primary/20 rounded-full overflow-hidden">
+                            <div className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full" style={{ width: '45%' }}></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-start gap-2">
+                          <Briefcase className="h-3 w-3 sm:h-4 sm:w-4 text-primary/60 mt-0.5 flex-shrink-0" />
+                          <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">Ministers, Undersecretaries, Directors General</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="group border-b border-primary/10 hover:bg-gradient-to-r hover:from-secondary/10 hover:to-transparent transition-all duration-300 hover:shadow-lg">
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                          </div>
+                          <span className="font-bold text-foreground text-xs sm:text-sm">Investors & Financial Institutions</span>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                        <div className="flex flex-col items-center gap-1.5">
+                          <span className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-secondary via-secondary/90 to-secondary/80 text-white font-black text-base sm:text-xl shadow-xl group-hover:scale-110 transition-transform">
+                            15%
+                          </span>
+                          <div className="w-16 sm:w-20 h-1.5 bg-secondary/20 rounded-full overflow-hidden">
+                            <div className="h-full bg-gradient-to-r from-secondary to-secondary/80 rounded-full" style={{ width: '15%' }}></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-start gap-2">
+                          <Briefcase className="h-3 w-3 sm:h-4 sm:w-4 text-secondary/60 mt-0.5 flex-shrink-0" />
+                          <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">CIOs, Portfolio Managers, ESG Heads</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="group border-b border-primary/10 hover:bg-gradient-to-r hover:from-accent/10 hover:to-transparent transition-all duration-300 hover:shadow-lg">
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <Factory className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                          </div>
+                          <span className="font-bold text-foreground text-xs sm:text-sm">Corporate & Industrial Energy Consumers</span>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                        <div className="flex flex-col items-center gap-1.5">
+                          <span className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-accent via-accent/90 to-accent/80 text-white font-black text-base sm:text-xl shadow-xl group-hover:scale-110 transition-transform">
+                            20%
+                          </span>
+                          <div className="w-16 sm:w-20 h-1.5 bg-accent/20 rounded-full overflow-hidden">
+                            <div className="h-full bg-gradient-to-r from-accent to-accent/80 rounded-full" style={{ width: '20%' }}></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-start gap-2">
+                          <Briefcase className="h-3 w-3 sm:h-4 sm:w-4 text-accent/60 mt-0.5 flex-shrink-0" />
+                          <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">CSOs, Energy & Sustainability Directors</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="group border-b border-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 hover:shadow-lg">
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary/80 via-secondary/80 to-primary/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                          </div>
+                          <span className="font-bold text-foreground text-xs sm:text-sm">Academia & Research</span>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                        <div className="flex flex-col items-center gap-1.5">
+                          <span className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary/80 via-secondary/80 to-primary/80 text-white font-black text-base sm:text-xl shadow-xl group-hover:scale-110 transition-transform">
+                            10%
+                          </span>
+                          <div className="w-16 sm:w-20 h-1.5 bg-primary/20 rounded-full overflow-hidden">
+                            <div className="h-full bg-gradient-to-r from-primary/80 to-secondary/80 rounded-full" style={{ width: '10%' }}></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-start gap-2">
+                          <Briefcase className="h-3 w-3 sm:h-4 sm:w-4 text-primary/60 mt-0.5 flex-shrink-0" />
+                          <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">Professors, Researchers, Innovation Leads</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="group hover:bg-gradient-to-r hover:from-secondary/10 hover:to-primary/10 transition-all duration-300 hover:shadow-lg">
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-secondary/80 via-primary/80 to-secondary/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <Globe className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                          </div>
+                          <span className="font-bold text-foreground text-xs sm:text-sm">Regional & International Organizations</span>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                        <div className="flex flex-col items-center gap-1.5">
+                          <span className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-secondary/80 via-primary/80 to-secondary/80 text-white font-black text-base sm:text-xl shadow-xl group-hover:scale-110 transition-transform">
+                            10%
+                          </span>
+                          <div className="w-16 sm:w-20 h-1.5 bg-secondary/20 rounded-full overflow-hidden">
+                            <div className="h-full bg-gradient-to-r from-secondary/80 to-primary/80 rounded-full" style={{ width: '10%' }}></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="flex items-start gap-2">
+                          <Briefcase className="h-3 w-3 sm:h-4 sm:w-4 text-secondary/60 mt-0.5 flex-shrink-0" />
+                          <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">Program Directors, Policy Experts</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Mobile Card View */}
+            <div className="md:hidden space-y-4">
+              <Card className="bg-white/95 backdrop-blur-sm border-2 border-primary/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardHeader className="bg-gradient-to-r from-primary to-primary/80">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
+                      <Shield className="h-5 w-5 text-white" />
+                    </div>
+                    <CardTitle className="text-white text-lg">Government & Semi-Government</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center gap-3 mb-4">
+                    <span className="text-4xl font-black text-primary">45%</span>
+                    <div className="w-full h-2 bg-primary/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full" style={{ width: '45%' }}></div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 pt-2 border-t border-primary/10">
+                    <Briefcase className="h-4 w-4 text-primary/60 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">Ministers, Undersecretaries, Directors General</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/95 backdrop-blur-sm border-2 border-secondary/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardHeader className="bg-gradient-to-r from-secondary to-secondary/80">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
+                      <TrendingUp className="h-5 w-5 text-white" />
+                    </div>
+                    <CardTitle className="text-white text-lg">Investors & Financial Institutions</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center gap-3 mb-4">
+                    <span className="text-4xl font-black text-secondary">15%</span>
+                    <div className="w-full h-2 bg-secondary/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-secondary to-secondary/80 rounded-full" style={{ width: '15%' }}></div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 pt-2 border-t border-secondary/10">
+                    <Briefcase className="h-4 w-4 text-secondary/60 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">CIOs, Portfolio Managers, ESG Heads</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/95 backdrop-blur-sm border-2 border-accent/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardHeader className="bg-gradient-to-r from-accent to-accent/80">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
+                      <Factory className="h-5 w-5 text-white" />
+                    </div>
+                    <CardTitle className="text-white text-lg">Corporate & Industrial Energy Consumers</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center gap-3 mb-4">
+                    <span className="text-4xl font-black text-accent">20%</span>
+                    <div className="w-full h-2 bg-accent/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-accent to-accent/80 rounded-full" style={{ width: '20%' }}></div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 pt-2 border-t border-accent/10">
+                    <Briefcase className="h-4 w-4 text-accent/60 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">CSOs, Energy & Sustainability Directors</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/95 backdrop-blur-sm border-2 border-primary/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardHeader className="bg-gradient-to-r from-primary/80 to-secondary/80">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
+                      <GraduationCap className="h-5 w-5 text-white" />
+                    </div>
+                    <CardTitle className="text-white text-lg">Academia & Research</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center gap-3 mb-4">
+                    <span className="text-4xl font-black text-primary">10%</span>
+                    <div className="w-full h-2 bg-primary/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-primary/80 to-secondary/80 rounded-full" style={{ width: '10%' }}></div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 pt-2 border-t border-primary/10">
+                    <Briefcase className="h-4 w-4 text-primary/60 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">Professors, Researchers, Innovation Leads</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/95 backdrop-blur-sm border-2 border-secondary/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardHeader className="bg-gradient-to-r from-secondary/80 to-primary/80">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
+                      <Globe className="h-5 w-5 text-white" />
+                    </div>
+                    <CardTitle className="text-white text-lg">Regional & International Organizations</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center gap-3 mb-4">
+                    <span className="text-4xl font-black text-secondary">10%</span>
+                    <div className="w-full h-2 bg-secondary/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-secondary/80 to-primary/80 rounded-full" style={{ width: '10%' }}></div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 pt-2 border-t border-secondary/10">
+                    <Briefcase className="h-4 w-4 text-secondary/60 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">Program Directors, Policy Experts</p>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
       {/* Job Titles Expected Section */}
-      <section id="job-titles" className="py-20 relative overflow-hidden bg-white">
+      <section id="job-titles" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-white">
         {/* Floating Icons Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none">
           {[
@@ -1328,18 +1259,49 @@ const Index = () => {
             );
           })}
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 px-2">
               <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
                 JOB TITLES EXPECTED
               </span>
             </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full"></div>
+            <div className="w-24 sm:w-32 h-1 sm:h-1.5 bg-gradient-to-r from-primary via-secondary to-primary mx-auto rounded-full"></div>
           </div>
 
-          {/* Job Titles Cards */}
-          <div className="grid grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto">
+          {/* Job Titles Cards - Mobile View */}
+          <div className="grid grid-cols-1 gap-4 max-w-7xl mx-auto md:hidden">
+            {jobTitles.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div 
+                  key={index}
+                  className="group relative bg-white rounded-xl border-2 border-primary/20 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                >
+                  {/* Gradient Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Content */}
+                  <div className="relative p-4 flex items-center gap-4">
+                    {/* Icon */}
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    
+                    {/* Title */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Job Titles Cards - Desktop View */}
+          <div className="hidden md:grid grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto">
             {jobTitles.map((item, index) => {
               const Icon = item.icon;
               return (
