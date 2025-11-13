@@ -423,4 +423,74 @@ All colors MUST be HSL.
   .animate-pulse-glow {
     animation: pulseGlow 4s ease-in-out infinite;
   }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out;
+  }
+  
+  @keyframes gradientShiftText {
+    0% {
+      background: linear-gradient(135deg, #7dd3fc 0%, #93c5fd 50%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    25% {
+      background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 50%, #d8b4fe 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    50% {
+      background: linear-gradient(135deg, #d8b4fe 0%, #f0abfc 50%, #f9a8d4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    75% {
+      background: linear-gradient(135deg, #f9a8d4 0%, #fda4af 50%, #fca5a5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    100% {
+      background: linear-gradient(135deg, #7dd3fc 0%, #93c5fd 50%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  
+  .animate-gradient-shift-text {
+    background: linear-gradient(135deg, #7dd3fc 0%, #93c5fd 50%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShiftText 4s ease-in-out infinite;
+  }
 }
