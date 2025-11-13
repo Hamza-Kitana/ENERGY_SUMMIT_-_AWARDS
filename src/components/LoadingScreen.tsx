@@ -26,26 +26,27 @@ const LoadingScreen = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6">
         {/* Title Container with 2026 Background */}
-        <div className="relative mb-8 sm:mb-12">
+        <div className="relative mb-6 sm:mb-8 md:mb-12 w-full">
           {/* Background 2026 - Only behind title */}
           <div className="absolute inset-0 flex items-center justify-center -z-10">
-            <span className="text-8xl sm:text-9xl md:text-[12rem] lg:text-[16rem] xl:text-[20rem] font-black opacity-10 text-white select-none pointer-events-none" style={{textShadow: '0 0 30px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.15)'}}>
+            <span className="text-6xl sm:text-7xl md:text-8xl lg:text-[12rem] xl:text-[16rem] font-black opacity-10 text-white select-none pointer-events-none" style={{textShadow: '0 0 30px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.15)'}}>
               2026
             </span>
           </div>
 
-          {/* Title with Gradient Animation */}
-          <h1 className="relative z-10 font-black uppercase text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl whitespace-nowrap animate-gradient-shift-text" style={{lineHeight: '1.3', textShadow: '0 2px 8px rgba(0,0,0,0.3)'}}>
-            Alternative Energy Summit & Award
+          {/* Title with Gradient Animation - Mobile Responsive */}
+          <h1 className="relative z-10 font-black uppercase text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl px-2 sm:px-4 animate-gradient-shift-text" style={{lineHeight: '1.4', textShadow: '0 2px 8px rgba(0,0,0,0.3)'}}>
+            <span className="block sm:inline">Alternative Energy</span>
+            <span className="block sm:inline sm:mx-1">Summit & Award</span>
           </h1>
         </div>
 
         {/* Loading Bar Container */}
-        <div className="relative z-10 w-full max-w-md">
+        <div className="relative z-10 w-full max-w-xs sm:max-w-sm md:max-w-md px-4 sm:px-0">
           {/* Loading Bar Background */}
-          <div className="h-2 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
+          <div className="h-1.5 sm:h-2 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
             {/* Loading Bar Fill */}
             <div 
               className="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-300 ease-out relative overflow-hidden"
@@ -57,16 +58,16 @@ const LoadingScreen = () => {
           </div>
           
           {/* Progress Percentage */}
-          <div className="mt-4 text-white/80 text-sm font-semibold">
+          <div className="mt-3 sm:mt-4 text-white/80 text-xs sm:text-sm font-semibold">
             {progress}%
           </div>
         </div>
 
         {/* Loading Dots */}
-        <div className="flex gap-2 mt-8">
-          <div className="w-2 h-2 bg-sky-300 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
-          <div className="w-2 h-2 bg-sky-300 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-          <div className="w-2 h-2 bg-sky-300 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+        <div className="flex gap-2 mt-6 sm:mt-8">
+          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-sky-300 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-sky-300 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-sky-300 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
         </div>
       </div>
 
